@@ -1,0 +1,41 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+*.translation
+*.resx
+
+# Godot-specific ignores
+godot/
+mono_crash.*.json
+_mono_log.txt
+
+# Imported textures and samples (auto-generated)
+.import/
+
+# Addons (ignored by default)
+addons/
+
+# System/IDE files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.un~
+Thumbs.db
+
+# Build exports
+*.exe
+*.x86_64
+*.x86
+*.apk
+*.aab
+*.pck
+*.zip
+
+# Logs and temp files
+*.log
+*.tmp
+temp/
+
