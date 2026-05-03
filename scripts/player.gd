@@ -1,11 +1,8 @@
-extends CharacterBody3D
+extends CharacterBody2D
 
-### Todo
-## decide on the states that the player can have
-## start implementing finite state machine
-## setup 3d world so you can see your character
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
 
 
 func _physics_process(delta: float) -> void:
@@ -19,13 +16,10 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var direction := Input.get_axis("ui_left", "ui_right")
 	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
+		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
