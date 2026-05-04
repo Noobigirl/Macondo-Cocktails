@@ -16,17 +16,15 @@ func _ready() -> void:
 	current_state.entering("") # entering the default state so no previous state or data to pass
 
 func _transtion_to_next_state(target_state: String, data:= {}) -> void: # passing the next state as a node path
-	if not has_node(target_state):
-		push_error(owner.name+ " is trying to change state to "+ target_state+ " which doesn't exist in its state machine")
-		return
+	assert(has_node(target_state), owner.name+ " is trying to change state to "+ target_state+ " which doesn't exist in its state machine")
 	
 	var previous_state := current_state.name # node name = state name 
 	current_state.exiting()
 	current_state = get_node(target_state)
 	current_state.entering(previous_state, data)
 
-func _unhandled_input(event: InputEvent) -> void:
-	current_state.handle_input(event)
+#func _unhandled_input(event: InputEvent) -> void:
+	#current_state.handle_input(event)
 
 func _process(delta: float) -> void:
 	current_state.update(delta)
