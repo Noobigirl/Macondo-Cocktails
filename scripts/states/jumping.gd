@@ -1,11 +1,19 @@
-extends Node
+extends PlayerState
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func entering(previous_state_path: String, data = {}) -> void:
+	print(JUMPING)
+	player.animation_player.play("jumping")
+	player.velocity.y = player.jump_velocity
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func physics_update(delta: float) -> void:
+	var direction :float= Input.get_axis("left", "right")
+	player.velocity += player.get_gravity() * delta #* player.gravity_modifier
+	# allowing the plater to move horizontally while jumping
+	# player moves slower in air than on ground
+	player.velocity.x = player.speed * direction *player.velocity_modifier
+	print(player.velocity.x)
+	player.move_and_slide() 
+	
+	if player.velocity.y >= 0:
+		finished.emit(FALLING)
