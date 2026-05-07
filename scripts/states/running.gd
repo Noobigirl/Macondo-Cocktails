@@ -17,7 +17,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_released("run"):
 		finished.emit(WALKING)
 
-	elif  not direction :
+	elif not direction :
 		finished.emit(IDLE)
 
 	elif not player.is_on_floor():

@@ -9,6 +9,11 @@ func entering(previous_state_path: String, data = {}) -> void:
 
 func physics_update(delta: float) -> void:
 	var direction :float= Input.get_axis("left", "right")
+	
+	if Input.is_action_just_released("jump"):
+		player.velocity.y *= player.jump_modifier # making the player jump "smaller" if 
+		# button not held while jumping
+
 	player.velocity += player.get_gravity() * delta #* player.gravity_modifier
 	# allowing the plater to move horizontally while jumping
 	# player moves slower in air than on ground

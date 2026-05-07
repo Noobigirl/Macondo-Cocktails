@@ -31,14 +31,16 @@ func physics_update(delta: float) -> void:
 	# allowing the player to move horizontally while falling
 	# of course, player can't move at the same speed as on ground
 	player.velocity.x = player.speed * direction * player.velocity_modifier
-	player.velocity += player.get_gravity() * delta * player.gravity_modifier
+	player.velocity += (player.get_gravity() * delta * player.gravity_modifier)
+	player.velocity = player.velocity.clampf(player.velocity.x, player.terminal_fall_velocity)
+	#print(player.velocity)
 	player.move_and_slide()
 	
 	if player.is_on_floor():
 		if jump_buffer_timer > 0.0: # if timer not finished when ground reached, jump again
 			print("successful buffering")
 			finished.emit(JUMPING)
-		# using  cuz this computers aren't precise with floats
+		# using cuz this computers aren't precise with floats
 		elif is_equal_approx(player.velocity.x, 0.0):
 			finished.emit(IDLE)
 		else:
