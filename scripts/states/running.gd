@@ -3,6 +3,7 @@ extends PlayerState
 
 func entering(previous_state_path: String, data = {}) -> void:
 	print(RUNNING)
+	player.state_label.text = RUNNING
 	player.animation_player.play("running")
 
 func physics_update(delta: float) -> void:

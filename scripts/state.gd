@@ -25,6 +25,10 @@ func entering(previous_state_path: String, data = {}) -> void:
 func update(_delta: float) -> void:
 	pass
 
+# called by the state machine when receiving unhandled input events.
+func handle_input(_event: InputEvent) -> void:
+	pass
+
 # called at the end of the physics's engine processing
 func physics_update(delta: float) -> void:
 	pass

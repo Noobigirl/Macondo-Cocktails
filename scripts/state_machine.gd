@@ -23,8 +23,8 @@ func _transtion_to_next_state(target_state: String, data:= {}) -> void: # passin
 	current_state = get_node(target_state)
 	current_state.entering(previous_state, data)
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#current_state.handle_input(event)
+func _unhandled_input(event: InputEvent) -> void:
+	current_state.handle_input(event)
 
 func _process(delta: float) -> void:
 	current_state.update(delta)

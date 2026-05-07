@@ -217,12 +217,26 @@ height = 16.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
+jump_buffer = 1.0
 metadata/_edit_group_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 limit_enabled = false
 position_smoothing_enabled = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -13.0
+offset_top = -18.0
+offset_right = 12.0
+offset_bottom = -4.041666
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 10
+text = "State"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_qlg0r")

@@ -3,6 +3,7 @@ extends PlayerState
 
 func entering(previous_state_path: String, data = {}) -> void:
 	print(IDLE)
+	player.state_label.text = IDLE
 	# making our player static and playing the animatin upon entering 
 	# using move_toward to create smooth deceleration instead of abruptly stop the player
 	# can alter the delta argument to create friction  make the player decelerate slower)
